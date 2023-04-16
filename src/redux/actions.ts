@@ -5,7 +5,6 @@ export enum ACTIONS_TYPE {
 }
 
 
-// @ts-ignore
 export const ChangeCurrencyFieldAC = (amountOfBYN: string, amountOfCurrency: string) => {
     return {
         type: ACTIONS_TYPE.CHANGE_CURRENCY_FIELD_TYPE,
@@ -14,7 +13,6 @@ export const ChangeCurrencyFieldAC = (amountOfBYN: string, amountOfCurrency: str
     } as const
 };
 
-// @ts-ignore
 export const ChangeActionAC = (isBuying: boolean) => {
     return {
         type: ACTIONS_TYPE.CHANGE_CHANGE_ACTION,
@@ -22,7 +20,6 @@ export const ChangeActionAC = (isBuying: boolean) => {
     } as const
 };
 
-// @ts-ignore
 export const ChangeCurrentCurrencyAC = (currentCurrency: string) => {
     return {
         type: ACTIONS_TYPE.CHANGE_CURRENT_CURRENCY,
