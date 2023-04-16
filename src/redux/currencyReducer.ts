@@ -36,7 +36,7 @@ const initialState: CurrencyState = {
     isBuying: true,
     amountOfBYN: '',
     amountOfCurrency: '',
-};
+}
 
 export const currencyReducer = (state: CurrencyState = initialState, action: CurrencyReducersTypes): CurrencyState => {
     switch (action.type) {
