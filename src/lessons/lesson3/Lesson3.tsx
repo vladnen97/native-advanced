@@ -9,12 +9,24 @@ const Lesson3 = () => {
     const [serachResultByType, setSerachResultByType] = useState('');
 
     const searchFilm = () => {
-        API.searchFilmsByTitle(searchName)
+        API.searchFilmsByTitle(searchName).then(data => {
+            if (data.Response === 'False') {
+                setSerachResult(data.Error)
+            } else {
+                setSerachResult(`title: ${data.Title} imdbRating: ${data.imdbRating}`)
+            }
+        })
     };
 
     const searchByType = (e: React.MouseEvent<HTMLButtonElement>) => {
         const type: string = e.currentTarget.dataset.t ? e.currentTarget.dataset.t : '';
-        API.searchFilmsByType(searchNameByType, type)
+        API.searchFilmsByType(searchNameByType, type).then(data => {
+            if (data.Response === 'False') {
+                setSerachResultByType(data.Error)
+            } else {
+                setSerachResultByType(`title: ${data.Title} imdbRating: ${data.imdbRating}`)
+            }
+        })
     }
 
     return (
