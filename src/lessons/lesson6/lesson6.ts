@@ -11,7 +11,20 @@ console.log('Lesson 6');
 // Создайте структуру с именем student, содержащую поля: имя и фамилия, номер группы, успеваемость (массив из пяти элементов).
 // Создать массив из десяти элементов такого типа, упорядочить записи по возрастанию среднего балла.
 // Добавить возможность вывода фамилий и номеров групп студентов, имеющих оценки, равные только 4 или 5.
+class Student {
+    private name: string;
+    private group: number;
+    private performance: number[];
 
+    constructor(name: string, group: number, performance: number[]) {
+        this.name = name
+        this.group = group
+        this.performance = performance
+    }
+    showBest(): void {
+        if (this.performance.every(el => el >= 4)) console.log(`name: ${this.name}; group: ${this.group}`)
+    }
+}
 // Task 02
 // Создать класс с двумя переменными. Добавить конструктор с входными параметрами и инициализирующий члены класса по умолчанию.
 // Можно ли создать метод на экземпляре класса который будет удалять сам экземпляр класса?
