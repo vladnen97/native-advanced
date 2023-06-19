@@ -25,10 +25,6 @@ class Student {
         if (this.performance.every(el => el >= 4)) console.log(`name: ${this.name}; group: ${this.group}`)
     }
 }
-// Task 02
-// Создать класс с двумя переменными. Добавить конструктор с входными параметрами и инициализирующий члены класса по умолчанию.
-// Можно ли создать метод на экземпляре класса который будет удалять сам экземпляр класса?
-// Можно ли создать метод класса который будет удалять экземпляр класса?
 
 // Task 03
 // Составить описание класса для представления времени. Предусмотреть возможности установки времени и изменения его отдельных
@@ -47,7 +43,30 @@ class Student {
 // Создать класс машина - имеющий марку, число цилиндров, мощность. Определить конструктор и функцию печати.
 // Создать производный класс – грузовик, имеющий грузоподъемность кузова.
 // Определить функции переназначения марки и грузоподъемности.
+class Car {
+    public brand: string;
+    private cylindersCount: number;
+    private hp: number;
+    constructor(brand: string, cylindersCount: number, hp: number) {
+        this.brand = brand
+        this.cylindersCount = cylindersCount
+        this.hp = hp
+    }
+}
 
+class Truck extends Car {
+    private carrying;
+    constructor(brand: string, cylindersCount: number, hp: number, carrying: number) {
+        super(brand, cylindersCount, hp);
+        this.carrying = carrying
+    }
+    changeBrand(newBrand: string) {
+        this.brand = newBrand
+    }
+    changeCarrying(newCarrying: number) {
+        this.carrying = newCarrying
+    }
+}
 // just a plug
 export default () => {
 };
