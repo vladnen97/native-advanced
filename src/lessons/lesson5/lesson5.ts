@@ -159,5 +159,7 @@ function foo2(one, helper) {
 //4)
 One.hi = () => helperObj.greeting.call(Two)
 
-//tasks from learn javascript
+//
+export default () => {
+};
 
