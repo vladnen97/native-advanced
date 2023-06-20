@@ -1,11 +1,27 @@
 // Task 1
 // Есть некоторая строка (const str = 'fgfggg';), что будет, если мы возьмем str[0]
+const str = 'fgfggg'
+// console.log(str[0] === 'f')
 
 // Task 2
 // Реализуйте необходимый код, что бы выражение (2).plus(3).minus(1) сработало и вернуло 4
+function plus(a) {
+	return this + a
+}
+
+function minus(a) {
+	return this - a
+}
+Number.prototype.plus = plus
+Number.prototype.minus = minus
+
 
 // Task 3
 // Реализуйте функцию, которая принимает следующие аргументы (строки) '*', '1', 'b', '1c', и возвращает строку '1*b*1c'
+const joinA = (simbol, ...args) => {
+	return args.join(simbol)
+}
+
 
 // Task 4
 // Напишите функцию которая найдет сумму всех вершин в структуре данны типа tree
