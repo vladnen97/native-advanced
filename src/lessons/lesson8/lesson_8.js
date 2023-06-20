@@ -6,12 +6,13 @@ const str = 'fgfggg'
 // Task 2
 // Реализуйте необходимый код, что бы выражение (2).plus(3).minus(1) сработало и вернуло 4
 function plus(a) {
-	return this + a
+    return this + a
 }
 
 function minus(a) {
-	return this - a
+    return this - a
 }
+
 Number.prototype.plus = plus
 Number.prototype.minus = minus
 
@@ -19,7 +20,7 @@ Number.prototype.minus = minus
 // Task 3
 // Реализуйте функцию, которая принимает следующие аргументы (строки) '*', '1', 'b', '1c', и возвращает строку '1*b*1c'
 const joinA = (simbol, ...args) => {
-	return args.join(simbol)
+    return args.join(simbol)
 }
 
 
@@ -29,42 +30,42 @@ const joinA = (simbol, ...args) => {
 // В цикле
 
 const tree = {
-	valueNode: 3,
-	next: [{
-		valueNode: 1,
-		next: null
-	},
-		{
-			valueNode: 3,
-			next: null
-		},
-		{
-			valueNode: 2,
-			next: null
-		},
-		{
-			valueNode: 2,
-			next: [
-				{
-					valueNode: 1,
-					next: null
-				},
-				{
-					valueNode: 5,
-					next: null
-				}
-			]
-		}]
+    valueNode: 3,
+    next: [{
+        valueNode: 1,
+        next: null
+    },
+        {
+            valueNode: 3,
+            next: null
+        },
+        {
+            valueNode: 2,
+            next: null
+        },
+        {
+            valueNode: 2,
+            next: [
+                {
+                    valueNode: 1,
+                    next: null
+                },
+                {
+                    valueNode: 5,
+                    next: null
+                }
+            ]
+        }]
 };
 
 function findVertexSum(obj) {
-	let value = obj.valueNode
-	if (obj.next) {
-		if(Array.isArray(obj.next)) {
-			value += obj.next.reduce((acc, el) => acc + findVertexSum(el), 0)
-		}
-	}
-	return value
+    let value = obj.valueNode
+    if (obj.next) {
+        if (Array.isArray(obj.next)) {
+            value += obj.next.reduce((acc, el) => acc + findVertexSum(el), 0)
+        }
+    }
+    return value
 }
 
 // Task 5
@@ -80,26 +81,47 @@ function findVertexSum(obj) {
 // Реализуйте функцию Foo, что бы все корректно работало
 
 function Book(name, author) {
-	this.name = name;
-	this.author = author;
-	return this;
+    this.name = name;
+    this.author = author;
+    return this;
 }
 
 function Foo(Constr, name, author) {
-	return new Constr(name, author)
+    return new Constr(name, author)
 }
 
 const test = Foo(Book, 'Учебник javascript', 'Петр Сергеев')
 const book = Foo(Book, 'js', 'petr');
 
-console.log(book.name);
-console.log(test.author);
+// console.log(book.name);
+// console.log(test.author);
 
 // Task 7
 // Реализовать функцию f: f(2, 3) -> 5, при вызове f(2)(3), тоже вернет 5
+function f() {
+    const [first, second] = arguments
+    if (arguments.length === 1) return (second) => f(first, second)
+    return first + second
+}
+
 
 // Task 8
 // Реализовать функцию f: f(1)(2)(3)() -> 6, f(0)(3)(1)(5)() -> 8
+const f1 = (...args) => {
+    return x => {
+        if (!x && x !== 0) {
+            return args.reduce((acc, a) => {
+                return acc + a
+            }, 0);
+        }
+        return f1(...args, x);
+    };
+};
+
+
+console.log(f1(1)(2)(3)())
+console.log(f1(3)(3)(1)(5)())
+
 
 // Task 9
 // Реализовать функции seven, plus, one, five, minus, two так, что бы следующие вызовы работали seven(plus(one())) -> 8. five(minus(two())) -> 3
@@ -122,23 +144,23 @@ console.log(test.author);
 // getTreeValues(tree); // => [1, 2, 3, 4, 5, 6, 7]
 
 const tree2 = {
-	value: 1,
-	children: [
-		{
-			value: 2,
-			children: [
-				{ value: 4 },
-				{ value: 5 },
-			]
-		},
-		{
-			value: 3,
-			children: [
-				{ value: 6 },
-				{ value: 7 },
-			]
-		}
-	]
+    value: 1,
+    children: [
+        {
+            value: 2,
+            children: [
+                {value: 4},
+                {value: 5},
+            ]
+        },
+        {
+            value: 3,
+            children: [
+                {value: 6},
+                {value: 7},
+            ]
+        }
+    ]
 };
 
 // Task 15
