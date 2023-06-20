@@ -19,19 +19,53 @@ console.log('Lesson 7');
 // метода walk, eat, sleep - каждый метод должен выводить в консоль строку имя + действие. Пример:
 // walk => `${this.name} walking`
 // проверить, что методы работают
+class Animal {
+    protected name: string;
+    constructor(name = 'Animal') {
+        this.name = name
+    }
+    public walk(): string {
+        return `${this.name} walking`
+    }
+    public eat(): string {
+        return `${this.name} walking`
+    }
+    public sleep(): string {
+        return `${this.name} walking`
+    }
+}
 
 
-
-//Task 02
-// Реализовать класс Monkey на базе класса Animal,  конструктор принимает name(по умолчанию 'Monkey') в качестве
-// параметра, реализовать методы roar и climb аналогично классу Animal
-// проверить, что все методы работают
-
+class Monkey extends Animal {
+    constructor(name = 'Monkey') {
+        super(name);
+        this.name = name
+    }
+    roar(): string {
+        return `${this.name} roars`
+    }
+    climb(): string {
+        return `${this.name} climbing`
+    }
+}
+const monkey = new Monkey()
 
 //Task 03
 // Реализовать класс Human на базе класса Monkey, конструктор принимает name(по умолчанию 'Human') в качестве
 // параметра, реализовать методы speak и think аналогично классу Animal
 // проверить, что все методы работают
+class Human extends Monkey {
+    constructor(name = 'Human') {
+        super(name);
+        this.name = name
+    }
+    speak():string {
+        return `${this.name} speaking`
+    }
+    think():string {
+        return `${this.name} thinking`
+    }
+}
 
 
 // Task 04
