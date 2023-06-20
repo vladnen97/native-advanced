@@ -57,14 +57,26 @@ const tree = {
 		}]
 };
 
+function findVertexSum(obj) {
+	let value = obj.valueNode
+	if (obj.next) {
+		if(Array.isArray(obj.next)) {
+			value += obj.next.reduce((acc, el) => acc + findVertexSum(el), 0)
+		}
+	}
+	return value
+}
+
+console.log(findVertexSum(tree))
+
 // Task 5
 // исправить код, что бы работал правильно
 
-for (var i = 0; i < 10; i++) {
-	setTimeout(function () {
-		console.log(i);
-	}, 100);
-}
+// for (let i = 0; i < 10; i++) {
+// 	setTimeout(function () {
+// 		console.log(i);
+// 	}, 100);
+// }
 
 // Task 6
 // Реализуйте функцию Foo, что бы все корректно работало
@@ -164,14 +176,14 @@ const tree2 = {
 // Task 21
 // Что выведет консоль?
 
-Promise
-	.resolve()
-	.then(() => console.log(1))
-	.then(() => console.log(2))
-	.then(() => console.log(3));
-
-Promise
-	.resolve()
-	.then(() => console.log(4))
-	.then(() => console.log(5))
-	.then(() => console.log(6));
+// Promise
+// 	.resolve()
+// 	.then(() => console.log(1))
+// 	.then(() => console.log(2))
+// 	.then(() => console.log(3));
+//
+// Promise
+// 	.resolve()
+// 	.then(() => console.log(4))
+// 	.then(() => console.log(5))
+// 	.then(() => console.log(6));
