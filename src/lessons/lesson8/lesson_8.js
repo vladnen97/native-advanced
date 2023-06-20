@@ -119,15 +119,66 @@ const f1 = (...args) => {
 };
 
 
-console.log(f1(1)(2)(3)())
-console.log(f1(3)(3)(1)(5)())
-
-
 // Task 9
 // Реализовать функции seven, plus, one, five, minus, two так, что бы следующие вызовы работали seven(plus(one())) -> 8. five(minus(two())) -> 3
+function plus1(num1, num2) {
+	if (!num2 && num2 !== 0) {
+		return (b) => plus1(num1, b)
+	}
+	return num2 + num1
+}
+function minus1(num1, num2) {
+	if (!num2 && num2 !== 0) {
+		return (b) => minus1(num1, b)
+	}
+	return num2 - num1
+}
+
+function seven() {
+	if (arguments[0]) {
+		return arguments[0](7)
+	}
+	return 7
+}
+function one() {
+	if (arguments[0]) {
+		return arguments[0](1)
+	}
+	return 1
+}
+function five() {
+	if (arguments[0]) {
+		return arguments[0](5)
+	}
+	return 5
+}
+function two() {
+	if (arguments[0]) {
+		return arguments[0](2)
+	}
+	return 2
+}
 
 // Task 10
 // Реализовать функцию сортировки массива пузырьком
+function bubbleSorting(arr) {
+	for (let j = 0; j < arr.length - 1; j++) {
+		let isSorted = true;
+
+		for (let i = 0; i < arr.length - 1 -j; i++) {
+			console.log(0);
+
+			if (arr[i] > arr[i + 1]) {
+				isSorted = false;
+				// let temp = nums[i]
+				// nums[i] = nums[i + 1]
+				// nums[i + 1] = temp
+				[arr[i + 1], arr[i]] = [arr[i], arr[i + 1]]
+			}
+		}
+		if(isSorted) break;
+	}
+}
 
 // Task 11
 // Есть строка, состоящая из разных скобок - str = "())({}}{()][][", написать функцию проверки закрыты ли все.
