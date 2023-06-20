@@ -38,6 +38,48 @@ class Student {
 // Методы: установка значений атрибутов, получение значений атрибутов, вывод информации.
 // Создать массив объектов данного класса.
 // Вывести список покупателей в алфавитном порядке и список покупателей, у которых номер кредитной карточки находится в заданном диапазоне.
+class Customer {
+    private firstName: string
+    private lastName: string
+    private address: string
+    private bankAccount: number
+    constructor(firstName: string, lastName: string, address: string, bankAccount: number) {
+        this.firstName = firstName
+        this.lastName = lastName
+        this.address = address
+        this.bankAccount = bankAccount
+    }
+
+    public get name() {
+        return this.firstName
+    }
+    public get surname() {
+        return this.lastName
+    }
+    public get addres() {
+        return this.address
+    }
+    public get bankCard() {
+        return this.bankAccount
+    }
+
+    public set name(name) {
+        this.firstName = name
+    }
+    public set surname(surname) {
+        this.lastName = surname
+    }
+    public set addres(address) {
+        this.address = address
+    }
+    public set bankCard(bankCard) {
+        this.bankAccount = bankCard
+    }
+
+    public customerInfo() {
+        console.log(`name: ${this.firstName} ${this.lastName}\naddress: ${this.address}\nbank account: ${this.bankAccount}`)
+    }
+}
 
 // Task 05
 // Создать класс машина - имеющий марку, число цилиндров, мощность. Определить конструктор и функцию печати.
