@@ -21,6 +21,7 @@ console.log('Lesson 7');
 // проверить, что методы работают
 
 
+
 //Task 02
 // Реализовать класс Monkey на базе класса Animal,  конструктор принимает name(по умолчанию 'Monkey') в качестве
 // параметра, реализовать методы roar и climb аналогично классу Animal
@@ -40,6 +41,8 @@ console.log('Lesson 7');
 // Task 05
 // Используя метод Apply реализовать свой собственный метод bind
 
+const bind = (fn, context, ...boundArgs) => (...args) =>
+    fn.apply(context, [...boundArgs, ...args]);
 
 // just a plug
 export default () => {};
