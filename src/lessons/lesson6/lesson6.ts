@@ -86,7 +86,7 @@ class Customer {
 // Создать производный класс – грузовик, имеющий грузоподъемность кузова.
 // Определить функции переназначения марки и грузоподъемности.
 class Car {
-    public brand: string;
+    protected brand: string;
     private cylindersCount: number;
     private hp: number;
     constructor(brand: string, cylindersCount: number, hp: number) {
