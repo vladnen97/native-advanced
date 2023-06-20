@@ -67,8 +67,6 @@ function findVertexSum(obj) {
 	return value
 }
 
-console.log(findVertexSum(tree))
-
 // Task 5
 // исправить код, что бы работал правильно
 
@@ -87,10 +85,15 @@ function Book(name, author) {
 	return this;
 }
 
-// function Foo(Book, 'Учебник javascript', 'Петр Сергеев')
-//
-// var book = Foo(Book, 'js', 'petr');
-// console.log(book.name);
+function Foo(Constr, name, author) {
+	return new Constr(name, author)
+}
+
+const test = Foo(Book, 'Учебник javascript', 'Петр Сергеев')
+const book = Foo(Book, 'js', 'petr');
+
+console.log(book.name);
+console.log(test.author);
 
 // Task 7
 // Реализовать функцию f: f(2, 3) -> 5, при вызове f(2)(3), тоже вернет 5
