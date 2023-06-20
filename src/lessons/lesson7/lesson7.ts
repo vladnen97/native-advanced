@@ -24,27 +24,31 @@ class Animal {
     constructor(name = 'Animal') {
         this.name = name
     }
-    public walk(): string {
+    public walk() {
         return `${this.name} walking`
     }
-    public eat(): string {
+    public eat() {
         return `${this.name} walking`
     }
-    public sleep(): string {
+    public sleep() {
         return `${this.name} walking`
     }
 }
 
 
+//Task 02
+// Реализовать класс Monkey на базе класса Animal,  конструктор принимает name(по умолчанию 'Monkey') в качестве
+// параметра, реализовать методы roar и climb аналогично классу Animal
+// проверить, что все методы работают
 class Monkey extends Animal {
     constructor(name = 'Monkey') {
         super(name);
         this.name = name
     }
-    roar(): string {
+    roar() {
         return `${this.name} roars`
     }
-    climb(): string {
+    climb() {
         return `${this.name} climbing`
     }
 }
@@ -59,13 +63,15 @@ class Human extends Monkey {
         super(name);
         this.name = name
     }
-    speak():string {
+    speak() {
         return `${this.name} speaking`
     }
-    think():string {
+    think() {
         return `${this.name} thinking`
     }
 }
+
+const human = new Human()
 
 
 // Task 04
