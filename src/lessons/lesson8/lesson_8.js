@@ -166,13 +166,10 @@ function bubbleSorting(arr) {
 		let isSorted = true;
 
 		for (let i = 0; i < arr.length - 1 -j; i++) {
-			console.log(0);
 
 			if (arr[i] > arr[i + 1]) {
 				isSorted = false;
-				// let temp = nums[i]
-				// nums[i] = nums[i + 1]
-				// nums[i + 1] = temp
+
 				[arr[i + 1], arr[i]] = [arr[i], arr[i + 1]]
 			}
 		}
@@ -180,15 +177,19 @@ function bubbleSorting(arr) {
 	}
 }
 
-// Task 11
-// Есть строка, состоящая из разных скобок - str = "())({}}{()][][", написать функцию проверки закрыты ли все.
 
 // Task 12
 // Необходимо написать функцию, принимающую в аргументах массив целых чисел и возвращающую новый массив, состоящий только из уникальных значений первого массива.
+function unique(arr) {
+	return [...new Set(arr)]
+}
 
 // Task 13
 // Написать функцию, принимающую аргументом массив чисел и возвращающую новый массив, состоящий из удвоенных значений первого.
 // f([1, 2, null, 7, 8, null, 3]); // => [2, 4, 14, 16, 6]
+function double(arr) {
+	return arr.map(el => typeof el === 'number' ? el * 2 : el).filter(el => el)
+}
 
 // Task 14
 // Необходимо написать функцию, возвращающую значения всех вершин дерева
@@ -213,6 +214,19 @@ const tree2 = {
         }
     ]
 };
+
+function getTreeValues(obj) {
+    let arr = []
+    arr.push(obj.value)
+    if (obj.children) {
+        if (Array.isArray(obj.children)) {
+            arr = arr.concat(obj.children.reduce((acc, el) => [...acc, ...getTreeValues(el)], []))
+        }
+    }
+    return arr.sort((a, b) => a - b)
+}
+
+console.log(getTreeValues(tree2))
 
 // Task 15
 // Необходимо написать функцию, возвращающую сумму всех вершин дерева из Task 14
@@ -248,18 +262,3 @@ const tree2 = {
 // list.has(1)                           // true
 // list.has(4)                           // true
 // list.has(6)                           // false
-
-// Task 21
-// Что выведет консоль?
-
-// Promise
-// 	.resolve()
-// 	.then(() => console.log(1))
-// 	.then(() => console.log(2))
-// 	.then(() => console.log(3));
-//
-// Promise
-// 	.resolve()
-// 	.then(() => console.log(4))
-// 	.then(() => console.log(5))
-// 	.then(() => console.log(6));
