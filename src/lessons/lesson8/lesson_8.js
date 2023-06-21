@@ -215,34 +215,64 @@ const tree2 = {
     ]
 };
 
-function getTreeValues(obj) {
-    let arr = []
-    arr.push(obj.value)
-    if (obj.children) {
-        if (Array.isArray(obj.children)) {
-            arr = arr.concat(obj.children.reduce((acc, el) => [...acc, ...getTreeValues(el)], []))
-        }
+function getTreeValues(tree) {
+    let values = [ tree.value ];
+
+    if (Array.isArray(tree.children)) {
+        tree.children.forEach(item => values = values.concat(getTreeValues(item)));
     }
-    return arr.sort((a, b) => a - b)
+
+    return values;
 }
 
 
 // Task 16
 // Надо реализовать «бомбу» (в виде функции-конструктора), которая получает на входе время, через которое взорвется и
 // некоторый «звук взрыва» (строку, которую вернет через заданное время).
-function Bomb(ms) {
-    setTimeout(() => {
-        console.log('boooom!!!')
-    }, ms)
+function Bomb(message, delay) {
+    this.message = message;
+
+    setTimeout(this.blowUp.bind(this), delay * 1000); // взрываем через delay sec
 }
+
+Bomb.prototype.blowUp = function () {
+    console.log(this.message);
+};
 
 // Task 17
 // Необходимо реализовать функцию, принимающую в аргументах строку, состоящую из букв и вернуть новую строку,
 // в которой повторяющиеся буквы заменены количеством повторений.
 // rle('AVVVBBBVVXDHJFFFFDDDDDDHAAAAJJJDDSLSSSDDDD'); // => 'AV3B3V2XDHJF4D6HA4J3D2SLS3D4'
+function rle(str) {
+    let curr = str[0]
+    let count = 1
+    let result = ''
+    for (let i = 0; i < str.length; i++) {
+        if (curr === str[i + 1]) {
+            count++
+        } else {
+            if (count > 1) {
+                result += curr + count
+            } else {
+                result +=curr
+            }
+            count = 1
+            curr = str[i+1]
+        }
+
+    }
+    return result
+}
+
 
 // Task 18
 // Реализуйте функцию isSorted(), которая возвращает true или false в зависимости о того, отсортирован ли переданный ей числовой массив.
+function isSorted(arr) {
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] > arr[i+1]) return false
+    }
+    return true
+}
 
 // Task 19
 // Реализуйте функцию missing(), которая принимает неотсортированный массив уникальных чисел (то есть, числа в нём не повторяются)
@@ -253,6 +283,13 @@ function Bomb(ms) {
 // missing([2, 3, 4])                  // 1
 // missing([5, 1, 4, 2])               // 3
 // missing([1, 2, 3, 4])               // undefined
+function missing(arr) {
+    const max = Math.max(...arr)
+
+    for (let i = 1; i < max; i++) {
+        if (!arr.includes(i)) return i
+    }
+}
 
 // Task 20
 // Реализуйте класс LinkedList, не используя встроенные массивы JavaScript ( [] ). Ваш LinkedList должен поддерживать лишь 2 метода: add() и has().
@@ -263,3 +300,16 @@ function Bomb(ms) {
 // list.has(1)                           // true
 // list.has(4)                           // true
 // list.has(6)                           // false
+class LinkedList {
+    constructor(value, ...args) {
+        this.value = value
+        if (args.length) {
+            this.next = new LinkedList(args[0], ...args.slice(1))
+        } else {
+            this.next = null
+        }
+    }
+}
+
+const list = new LinkedList(1 ,2 ,3)
+console.log(list)
